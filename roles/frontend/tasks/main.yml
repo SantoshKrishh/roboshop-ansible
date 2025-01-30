@@ -1,0 +1,31 @@
+      - name: Install Nginx Server
+        ansible.builtin.yum:
+         name: nginx
+         state: latest
+
+      - name: Remove Directory
+        ansible.builtin.file:
+         path: /usr/share/nginx/html
+         state: absent
+
+      - name: Create Directory
+        ansible.builtin.file:
+         path: /usr/share/nginx/html
+         state: directory
+
+      - name: Download and Unzip Frontend Content
+        ansible.builtin.unarchive:
+         src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+         dest: /usr/share/nginx/html
+         remote_src: yes
+
+      - name: Copy Nginx Roboshop Config
+        ansible.builtin.copy:
+         src: /home/centos/Shop-shell/roboshop.conf
+         dest: /etc/nginx/default.d/roboshop.conf
+
+      - name: Start Nginx Service
+        ansible.builtin.service:
+         name: nginx
+         state: restarted
+         enabled: yes
