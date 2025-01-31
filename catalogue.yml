@@ -1,6 +1,5 @@
-- name: Setup Catalogue
+- name: Setup catalogue
   hosts: all
   become: yes
-  vars:
-  tasks:
-      - name
+  roles:
+    - catalogue
