@@ -1,0 +1,5 @@
+- name: roboshop web application main yml file
+  hosts: all
+  become: yes
+  roles:
+    - {{role_name}}
