@@ -11,10 +11,7 @@
   ansible.builtin.import_tasks:
    file: app_presetup.yml
 
-- name: Install NodeJS
-  ansible.builtin.yum:
-    name: npm
-    state: present  
+ 
     
      
    
