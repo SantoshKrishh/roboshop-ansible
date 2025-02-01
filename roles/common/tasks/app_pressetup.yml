@@ -1,7 +1,3 @@
-- name: Load App prequisites
-  ansible.builtin.include_tasks:
-   file: app_presetup.yml
-
 - name: Add Application user
   ansible.builtin.user:     
     name: roboshop
