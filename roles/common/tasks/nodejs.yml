@@ -2,14 +2,29 @@
 - name: Configuring NodeJS Repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-- name:   Install NodeJS
+- name: Install NodeJS
   ansible.builtin.yum:
     name: nodejs
     state: installed
 
+- name: App pre-requisites
+  ansible.builtin.include_tasks: 
+   file: app_presetup.yml
+    
+     
+   
+
+   
+
+  
+
  
 
+  # echo -e "${color} Install NodeJS Dependencies${nocolor}"
+  # npm install  &>>$log_file
+  # stat_check $?
 
+  # systemd_setup
 
 
 
@@ -19,29 +34,3 @@
 
  
 
-  # # echo -e "${color} Add Application User${nocolor}"
-  # id roboshop &>>$log_file
-  # if [ $? -eq 1 ]; then
-  #   useradd roboshop  &>>$log_file
-  # fi
-  # stat_check $?
-
-  # echo -e "${color} Create Application Directory ${nocolor}"
-  # rm -rf /app   &>>$log_file
-  # mkdir /app
-  # stat_check $?
-
-  # echo -e "${color} Download Application Content ${nocolor}"
-  # curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip  &>>$log_file
-  # stat_check $?
-
-  # echo -e "${color} Extract Application Content${nocolor}"
-  # cd ${app_path}
-  # unzip /tmp/$component.zip  &>>$log_file
-  # stat_check $?
-
-  # echo -e "${color} Install NodeJS Dependencies${nocolor}"
-  # npm install  &>>$log_file
-  # stat_check $?
-
-  # systemd_setup
