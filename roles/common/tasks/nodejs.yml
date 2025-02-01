@@ -8,7 +8,7 @@
     state: present
 
 - name: App pre-requisites
-  ansible.builtin.include_tasks: 
+  ansible.builtin.import_tasks: 
    file: app_presetup.yml
 
 - name: Install NodeJS
