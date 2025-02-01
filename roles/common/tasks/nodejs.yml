@@ -5,11 +5,16 @@
 - name: Install NodeJS
   ansible.builtin.yum:
     name: nodejs
-    state: installed
+    state: present
 
 - name: App pre-requisites
   ansible.builtin.include_tasks: 
    file: app_presetup.yml
+
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: npm
+    state: present  
     
      
    
