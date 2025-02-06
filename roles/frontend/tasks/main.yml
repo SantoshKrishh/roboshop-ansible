@@ -22,7 +22,7 @@
 
       - name: Copy Nginx Roboshop Config
         ansible.builtin.copy:
-         src: /home/centos/Shop-shell/roboshop.conf
+         src: roboshop.conf
          dest: /etc/nginx/default.d/roboshop.conf
 
       - name: Start Nginx Service
