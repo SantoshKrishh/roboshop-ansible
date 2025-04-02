@@ -16,9 +16,15 @@
 # stat_check $?
 
 
-- name: Install the Redis rpm from a remote repo
+- name: Install Remi repo for CentOS Stream 8
+  ansible.builtin.get_url:
+    url: https://rpms.remirepo.net/enterprise/remi-release-8-stream.rpm
+    dest: /tmp/remi-release-8-stream.rpm
+
+- name: Install Remi repo RPM
   ansible.builtin.dnf:
-    name: 'https://rpms.remirepo.net/enterprise/remi-release-8-stream.rpm'
+    name: /tmp/remi-release-8-stream.rpm
     state: present
+    disable_gpg_check: yes
 
 
