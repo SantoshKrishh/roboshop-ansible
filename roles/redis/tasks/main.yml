@@ -1,19 +1,4 @@
 
-
-# echo -e " ${color}  Install Redis  ${nocolor} "
-# yum install redis -y &>>/tmp/roboshop.log
-# stat_check $?
-
-# echo -e " ${color}  Update Redis Listen address  ${nocolor} "
-# sed -i 's/127.0.0.1/0.0.0.0/' /etc/redis.conf /etc/redis/redis.conf &>>/tmp/roboshop.log
-# stat_check $?
-
-# echo -e " ${color}  Start Redis Service  ${nocolor} "
-# systemctl enable redis  &>>/tmp/roboshop.log
-# systemctl restart redis  &>>/tmp/roboshop.log
-# stat_check $?
-
-
 - name: Disable the default Redis module
   ansible.builtin.command: dnf module disable -y redis
   become: true
@@ -21,3 +6,29 @@
 - name: Enable Redis 6 module
   ansible.builtin.command: dnf module enable redis:6 -y
   become: true
+
+- name: Install Redis
+  ansible.builtin.dnf:
+    name: redis
+    state: present
+  become: true
+
+- name: Update Redis listen address 1
+  ansible.builtin.replace:
+   path: /etc/redis.conf
+   regexp: '127.0.0.1'
+   replace: '0.0.0.0'
+
+- name: Update Redis listen address 2
+  ansible.builtin.replace:
+   path: /etc/redis.conf
+   regexp: '127.0.0.1'
+   replace: '0.0.0.0' 
+
+
+- name: Start Redis service
+  ansible.builtin.systemd:
+    name: redis
+    state: restarted
+    enabled: true
+  
