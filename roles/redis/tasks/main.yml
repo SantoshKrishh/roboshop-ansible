@@ -18,7 +18,7 @@
 
 - name: Install the Redis rpm from a remote repo
   ansible.builtin.dnf:
-    name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
+    name: 'https://rpms.remirepo.net/enterprise/remi-release-8-stream.rpm'
     state: present
 
 
