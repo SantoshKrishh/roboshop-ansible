@@ -1,0 +1,29 @@
+
+
+# echo -e " ${color}  Setup MySQL Password  ${nocolor} "
+# mysql_secure_installation --set-root-pass $root_password &>>/tmp/roboshop.log
+# stat_check $?
+
+- name: Disable MySQL Default Version
+  ansible.builtin.command: yum module disable mysql -y
+
+
+- name: Copy MySQL repo file
+  ansible.buitin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo   
+
+- name: Install MySQL Community Server
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Start MySQL Service
+  ansible.builtin.systemd:
+    name: mysqld
+    enabled: true
+    state: restarted        
+  
+- name: set Up root Password
+  ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
+  
