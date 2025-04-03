@@ -9,7 +9,7 @@
 
 
 - name: Copy MySQL repo file
-  ansible.buitin.copy:
+  ansible.builtin.copy:
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo   
 
