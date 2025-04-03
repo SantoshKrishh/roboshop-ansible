@@ -9,7 +9,7 @@
     state: present
 
 - name: Load Schema
-  ansible.builtin.shell: mongo --host mongodb.roboshopsk.shop </app/schema/{{ component }}.sql
+  ansible.builtin.shell: mongo --host mongodb.roboshopsk.shop </app/schema/{{ component }}.js
       
 
 

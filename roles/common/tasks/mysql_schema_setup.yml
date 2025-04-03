@@ -5,7 +5,7 @@
     state: present
 
 - name: Load Schema
-  ansible.builtin.shell: mysql --host mysql.roboshopsk.shop -uroot -pRoboShop@1 </app/schema/{{ component }}.js
+  ansible.builtin.shell: mysql --host mysql.roboshopsk.shop -uroot -pRoboShop@1 </app/schema/{{ component }}.sql
       
 
 
