@@ -24,7 +24,7 @@
    file: app_presetup.yml
 
 - name: Download Maven Dependencies
-  ansible.builtin.command: 
+  ansible.builtin.shell: 
     cmd: mvn clean package ; mv target/{{ component }}-1.0.jar {{ component }}.jar
     chdir: /app
   
