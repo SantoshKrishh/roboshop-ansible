@@ -23,7 +23,8 @@
 
 - name: App presetup
   ansible.builtin.include_role:
-    name: app_presetup.yml
+    name: common
+    tasks_from: app_presetup.yml
 
 - name: Install Application Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
@@ -32,5 +33,6 @@
 
 - name: Systemd setup
   ansible.builtin.include_role:
-    name: systemd_setup.yml  
+    name: common
+    tasks_from: systemd_setup.yml  
   
