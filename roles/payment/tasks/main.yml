@@ -21,7 +21,7 @@
      - python3-devel
     state: installed
 
-- name: App app_presetup
+- name: App presetup
   ansible.builtin.include_role:
     name: app_presetup.yml
 
