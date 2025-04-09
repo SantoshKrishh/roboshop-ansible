@@ -27,7 +27,8 @@
 
 - name: Install Application Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
-  chdir: /app
+  args:
+    chdir: /app
 
 - name: Systemd setup
   ansible.builtin.include_role:
